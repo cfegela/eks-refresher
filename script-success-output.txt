@@ -1,0 +1,154 @@
+./setup-eks-cluster.sh 
+installing required tools...
+==> Downloading https://formulae.brew.sh/api/formula.jws.json
+==> Downloading https://formulae.brew.sh/api/cask.jws.json
+Warning: No available formula with the name "k9". Did you mean k9s?
+==> Searching for similarly named formulae and casks...
+Error: Unexpected method 'appcast' called on Cask adoptopenjdk9.
+Follow the instructions here:
+  https://github.com/Homebrew/homebrew-cask#reporting-bugs
+==> Formulae
+k9s ✔
+
+To install k9s ✔, run:
+  brew install k9s ✔
+
+==> Casks
+adoptopenjdk/openjdk/adoptopenjdk9
+
+To install adoptopenjdk/openjdk/adoptopenjdk9, run:
+  brew install --cask adoptopenjdk/openjdk/adoptopenjdk9
+setting up cluster...
+2025-02-14 14:35:24 [ℹ]  eksctl version 0.203.0-dev+00788c837.2025-02-01T22:02:50Z
+2025-02-14 14:35:24 [ℹ]  using region us-east-2
+2025-02-14 14:35:24 [ℹ]  setting availability zones to [us-east-2a us-east-2c us-east-2b]
+2025-02-14 14:35:24 [ℹ]  subnets for us-east-2a - public:192.168.0.0/19 private:192.168.96.0/19
+2025-02-14 14:35:24 [ℹ]  subnets for us-east-2c - public:192.168.32.0/19 private:192.168.128.0/19
+2025-02-14 14:35:24 [ℹ]  subnets for us-east-2b - public:192.168.64.0/19 private:192.168.160.0/19
+2025-02-14 14:35:24 [ℹ]  using Kubernetes version 1.30
+2025-02-14 14:35:24 [ℹ]  creating EKS cluster "kate" in "us-east-2" region with Fargate profile
+2025-02-14 14:35:24 [ℹ]  if you encounter any issues, check CloudFormation console or try 'eksctl utils describe-stacks --region=us-east-2 --cluster=kate'
+2025-02-14 14:35:24 [ℹ]  Kubernetes API endpoint access will use default of {publicAccess=true, privateAccess=false} for cluster "kate" in "us-east-2"
+2025-02-14 14:35:24 [ℹ]  CloudWatch logging will not be enabled for cluster "kate" in "us-east-2"
+2025-02-14 14:35:24 [ℹ]  you can enable it with 'eksctl utils update-cluster-logging --enable-types={SPECIFY-YOUR-LOG-TYPES-HERE (e.g. all)} --region=us-east-2 --cluster=kate'
+2025-02-14 14:35:24 [ℹ]  default addons vpc-cni, kube-proxy, coredns, metrics-server were not specified, will install them as EKS addons
+2025-02-14 14:35:24 [ℹ]  
+2 sequential tasks: { create cluster control plane "kate", 
+    3 sequential sub-tasks: { 
+        1 task: { create addons },
+        wait for control plane to become ready,
+        create fargate profiles,
+    } 
+}
+2025-02-14 14:35:24 [ℹ]  building cluster stack "eksctl-kate-cluster"
+2025-02-14 14:35:25 [ℹ]  deploying stack "eksctl-kate-cluster"
+2025-02-14 14:35:55 [ℹ]  waiting for CloudFormation stack "eksctl-kate-cluster"
+2025-02-14 14:36:25 [ℹ]  waiting for CloudFormation stack "eksctl-kate-cluster"
+2025-02-14 14:37:25 [ℹ]  waiting for CloudFormation stack "eksctl-kate-cluster"
+2025-02-14 14:38:26 [ℹ]  waiting for CloudFormation stack "eksctl-kate-cluster"
+2025-02-14 14:39:26 [ℹ]  waiting for CloudFormation stack "eksctl-kate-cluster"
+2025-02-14 14:40:26 [ℹ]  waiting for CloudFormation stack "eksctl-kate-cluster"
+2025-02-14 14:41:26 [ℹ]  waiting for CloudFormation stack "eksctl-kate-cluster"
+2025-02-14 14:42:27 [ℹ]  waiting for CloudFormation stack "eksctl-kate-cluster"
+2025-02-14 14:43:27 [ℹ]  waiting for CloudFormation stack "eksctl-kate-cluster"
+2025-02-14 14:44:27 [ℹ]  waiting for CloudFormation stack "eksctl-kate-cluster"
+2025-02-14 14:44:29 [!]  recommended policies were found for "vpc-cni" addon, but since OIDC is disabled on the cluster, eksctl cannot configure the requested permissions; the recommended way to provide IAM permissions for "vpc-cni" addon is via pod identity associations; after addon creation is completed, add all recommended policies to the config file, under `addon.PodIdentityAssociations`, and run `eksctl update addon`
+2025-02-14 14:44:29 [ℹ]  creating addon
+2025-02-14 14:44:29 [ℹ]  successfully created addon
+2025-02-14 14:44:30 [ℹ]  creating addon
+2025-02-14 14:44:30 [ℹ]  successfully created addon
+2025-02-14 14:44:30 [ℹ]  creating addon
+2025-02-14 14:44:31 [ℹ]  successfully created addon
+2025-02-14 14:44:31 [ℹ]  creating addon
+2025-02-14 14:44:32 [ℹ]  successfully created addon
+2025-02-14 14:46:33 [ℹ]  creating Fargate profile "fp-default" on EKS cluster "kate"
+2025-02-14 14:48:43 [ℹ]  created Fargate profile "fp-default" on EKS cluster "kate"
+2025-02-14 14:49:13 [ℹ]  "coredns" is now schedulable onto Fargate
+2025-02-14 14:50:17 [ℹ]  "coredns" is now scheduled onto Fargate
+2025-02-14 14:50:17 [ℹ]  "coredns" pods are now scheduled onto Fargate
+2025-02-14 14:50:17 [ℹ]  waiting for the control plane to become ready
+2025-02-14 14:50:18 [✔]  saved kubeconfig as "/Users/cfegela/.kube/config"
+2025-02-14 14:50:18 [ℹ]  no tasks
+2025-02-14 14:50:18 [✔]  all EKS cluster resources for "kate" have been created
+2025-02-14 14:50:19 [ℹ]  kubectl command should work with "/Users/cfegela/.kube/config", try 'kubectl get nodes'
+2025-02-14 14:50:19 [✔]  EKS cluster "kate" in "us-east-2" region is ready
+applying configs...
+deployment.apps/deployment-nginx created
+service/service-nginx created
+ingress.networking.k8s.io/ingress-nginx created
+checking configs...
+NAME                                    READY   STATUS    RESTARTS   AGE
+pod/deployment-nginx-65fd68f896-6lzlx   1/1     Running   0          2m1s
+pod/deployment-nginx-65fd68f896-hlsb5   1/1     Running   0          2m1s
+pod/deployment-nginx-65fd68f896-jswjn   1/1     Running   0          2m1s
+pod/deployment-nginx-65fd68f896-msd7j   1/1     Running   0          2m1s
+pod/deployment-nginx-65fd68f896-qkbnl   1/1     Running   0          2m1s
+
+NAME                    TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+service/kubernetes      ClusterIP   10.100.0.1      <none>        443/TCP        11m
+service/service-nginx   NodePort    10.100.165.39   <none>        80:31268/TCP   2m1s
+
+NAME                               READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/deployment-nginx   5/5     5            5           2m2s
+
+NAME                                          DESIRED   CURRENT   READY   AGE
+replicaset.apps/deployment-nginx-65fd68f896   5         5         5       2m2s
+NAME            CLASS   HOSTS   ADDRESS   PORTS   AGE
+ingress-nginx   alb     *                 80      2m2s
+apprving oidc connection...
+2025-02-14 14:52:56 [ℹ]  will create IAM Open ID Connect provider for cluster "kate" in "us-east-2"
+2025-02-14 14:52:56 [✔]  created IAM Open ID Connect provider for cluster "kate" in "us-east-2"
+creating iam resources...
+
+An error occurred (EntityAlreadyExists) when calling the CreatePolicy operation: A policy called AWSLoadBalancerControllerIAMPolicy already exists. Duplicate names are not allowed.
+2025-02-14 14:53:09 [ℹ]  1 iamserviceaccount (kube-system/aws-load-balancer-controller) was included (based on the include/exclude rules)
+2025-02-14 14:53:09 [!]  serviceaccounts that exist in Kubernetes will be excluded, use --override-existing-serviceaccounts to override
+2025-02-14 14:53:09 [ℹ]  1 task: { 
+    2 sequential sub-tasks: { 
+        create IAM role for serviceaccount "kube-system/aws-load-balancer-controller",
+        create serviceaccount "kube-system/aws-load-balancer-controller",
+    } }2025-02-14 14:53:09 [ℹ]  building iamserviceaccount stack "eksctl-kate-addon-iamserviceaccount-kube-system-aws-load-balancer-controller"
+2025-02-14 14:53:09 [ℹ]  deploying stack "eksctl-kate-addon-iamserviceaccount-kube-system-aws-load-balancer-controller"
+2025-02-14 14:53:09 [ℹ]  waiting for CloudFormation stack "eksctl-kate-addon-iamserviceaccount-kube-system-aws-load-balancer-controller"
+2025-02-14 14:53:39 [ℹ]  waiting for CloudFormation stack "eksctl-kate-addon-iamserviceaccount-kube-system-aws-load-balancer-controller"
+2025-02-14 14:53:39 [ℹ]  created serviceaccount "kube-system/aws-load-balancer-controller"
+installing aws load balancer controller (awslbc)...
+"eks" already exists with the same configuration, skipping
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "eks" chart repository
+Update Complete. ⎈Happy Helming!⎈
+NAME: aws-load-balancer-controller
+LAST DEPLOYED: Fri Feb 14 14:53:53 2025
+NAMESPACE: kube-system
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+AWS Load Balancer controller installed!
+waiting for lbc's to activate...
+NAME            CLASS   HOSTS   ADDRESS                                                                 PORTS   AGE
+ingress-nginx   alb     *       k8s-default-ingressn-fc896ce325-390801258.us-east-2.elb.amazonaws.com   80      5m21s
+Chris-Fegela-MacBook-Pro:eks-refresher cfegela$ curl k8s-default-ingressn-fc896ce325-390801258.us-east-2.elb.amazonaws.com
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
