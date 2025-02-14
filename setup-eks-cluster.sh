@@ -2,6 +2,11 @@
 # from: https://aws.plainenglish.io/navigate-aws-eks-with-fargate-a-hands-on-project-guide-to-seamless-kubernetes-deployment-and-39bae6600127
 # note: the above required a correction to the iam policy for the awslbc to work. this fix is refelected in the policy document in this repo
 
+# install tools
+echo "installing required tools..."
+brew install kubectl eksctl helm k9
+sleep 5
+
 # set up the cluster
 echo "setting up cluster..."
 eksctl create cluster --region us-east-2 --name kate --fargate
@@ -39,7 +44,7 @@ sleep 10
 
 # install load balancer controller
 echo "installing aws load balancer controller (awslbc)..."
-echo "enter vpc id of eksctl/cloudformation-created vpc:" && read vpcid
+vpcid=$(aws ec2 describe-vpcs --region us-east-2 --filters Name=tag:Name,Values=eksctl-kate-cluster* | grep VpcId | cut -d"\"" -f4)
 helm repo add eks https://aws.github.io/eks-charts
 helm repo update eks
 helm install aws-load-balancer-controller eks/aws-load-balancer-controller -n kube-system --set clusterName=kate --set serviceAccount.create=false --set serviceAccount.name=aws-load-balancer-controller --set region=us-east-2 --set vpcId=${vpcid}
